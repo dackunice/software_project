@@ -1,48 +1,49 @@
-/**
- * SYST 17796 Project Winter 2019 Base code.
- * Students can modify and extend to implement their game.
- * Add your name as a modifier and the date!
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package ca.sheridancollege.project;
+import java.util.ArrayList;
 
 /**
- * A class that models each Player in the game. Players have an identifier, which should be unique.
- * @author dancye, 2018
+ *
+ * @author conqu
  */
-public abstract class Player 
-{
-    private String playerID; //the unique ID for this player
+public class Player {
     
-    /**
-     * A constructor that allows you to set the player's unique ID
-     * @param name the unique ID to assign to this player.
-     */
-    public Player(String name)
-    {
-        playerID= name;
+    String playerName;
+    String curCard;
+    ArrayList<Card> cardList;
+    
+    public Player(String name) {
+        this.playerName = name;
+        this.cardList = new ArrayList<Card>(26);
     }
     
-    /**
-     * @return the playerID
-     */
-    public String getPlayerID() 
-    {
-        return playerID;
-    }
-
-    /**
-     * Ensure that the playerID is unique
-     * @param givenID the playerID to set
-     */
-    public void setPlayerID(String givenID) 
-    {
-        playerID = givenID;
+    public String getPlayerName() {
+        return this.playerName;
     }
     
-    /**
-     * The method to be instantiated when you subclass the Player class
-     * with your specific type of Player and filled in with logic to play your game.
-     */
-    public abstract void play();
+    public void setPlayerName(String name) {
+        this.playerName = name;
+    }
     
+    public void addCard(Card card) {
+        this.cardList.add(card);       
+    } 
+    
+    public Card play() {    
+        Card temp = this.cardList.get(0);
+        this.cardList.remove(0);
+        this.curCard = temp.toString();
+        
+       
+        return temp;
+    }
+    
+    public int getCardLeft() {
+        
+        return this.cardList.size();
+    }
 }

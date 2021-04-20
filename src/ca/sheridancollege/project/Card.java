@@ -11,16 +11,25 @@ package ca.sheridancollege.project;
  * should remember to add themselves as a modifier.
  * @author dancye, 2018
  */
-public abstract class Card 
+public class Card 
 {
-    //default modifier for child classes
+    String cardShape;
+    int cardNumber;
+
+    public Card(String shape, int number) {
+        this.cardShape = shape;
+        this.cardNumber = number;
+    }
     
-    /**
-     * Students should implement this method for their specific children classes 
-     * @return a String representation of a card. Could be an UNO card, a regular playing card etc.
-     */
+    public int getCardNumber() {
+        return this.cardNumber;
+    }
+    public String getCardShape() {
+        return this.cardShape;
+    }
     
-    @Override
-    public abstract String toString();
+    public String toString() {
+        return this.cardShape + " " + this.cardNumber;
+    }
     
 }
